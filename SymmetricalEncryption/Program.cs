@@ -91,11 +91,12 @@ namespace SymmetricalEncryption
                 Console.Write("Messsage: ");
                 message = Console.ReadLine();
 
-               byte[] encrypted = encrypter.Encrypt(Encoding.UTF8.GetBytes(message));
-                Console.WriteLine($"\r\nYour decrypted message: {encrypter.Decryption(encrypted, encrypter.MyCipherAlg.Key, encrypter.MyCipherAlg.IV)}");
-                Console.WriteLine($"\nYour encrypted message: {Convert.ToBase64String(encrypted)}");
-                Console.WriteLine($"\nYour key: {Convert.ToBase64String(encrypter.MyCipherAlg.Key)}");
-                Console.WriteLine($"The IV: {Convert.ToBase64String(encrypter.MyCipherAlg.IV)}");
+                key = encrypter.myCipherAlg.Key;
+                iv = encrypter.myCipherAlg.IV;
+
+                Console.WriteLine($"\nYour encrypted message: {encrypter.Encrypt(message, key, iv)}");
+                Console.WriteLine($"\nYour key: {Convert.ToBase64String(key)}");
+                Console.WriteLine($"The IV: {Convert.ToBase64String(iv)}");
                 Console.WriteLine("Plz press enter for continuing");
                 Console.ReadLine();
             }
@@ -112,7 +113,7 @@ namespace SymmetricalEncryption
                 Console.Write("\nThe IV: ");
                 iv = Convert.FromBase64String(Console.ReadLine());
 
-                Console.WriteLine($"\r\nYour decrypted message: {encrypter.Decryption(Convert.FromBase64String(message), key, iv)}");
+                Console.WriteLine($"\r\nYour decrypted message: {encrypter.Decrypt(message, key, iv)}");
                 Console.WriteLine("Plz press enter for continuing");
                 Console.ReadLine();
             }
