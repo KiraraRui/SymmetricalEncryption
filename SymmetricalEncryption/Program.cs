@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace SymmetricalEncryption
@@ -52,12 +53,7 @@ namespace SymmetricalEncryption
                 else if (userInput == "4")
                 {
                     isRunning = false;
-                }
-                //this one is never shown, fix
-                else
-                {
-                    Console.WriteLine("Please choose an option");
-                }
+                }                         
             }
         }
 
@@ -94,7 +90,11 @@ namespace SymmetricalEncryption
                 key = encrypter.myCipherAlg.Key;
                 iv = encrypter.myCipherAlg.IV;
 
+                Stopwatch stopWatch = new Stopwatch();
+                stopWatch.Start();
                 Console.WriteLine($"\nYour encrypted message: {encrypter.Encrypt(message, key, iv)}");
+                stopWatch.Stop();
+                Console.WriteLine("Time for encryption :" + stopWatch.ElapsedMilliseconds + "milliseconds");
                 Console.WriteLine($"\nYour key: {Convert.ToBase64String(key)}");
                 Console.WriteLine($"The IV: {Convert.ToBase64String(iv)}");
                 Console.WriteLine("Plz press enter for continuing");
@@ -113,17 +113,28 @@ namespace SymmetricalEncryption
                 Console.Write("\nThe IV: ");
                 iv = Convert.FromBase64String(Console.ReadLine());
 
+                Stopwatch stopWatch = new Stopwatch();
+                stopWatch.Start();
+
                 Console.WriteLine($"\r\nYour decrypted message: {encrypter.Decrypt(message, key, iv)}");
+                stopWatch.Stop();
+                Console.WriteLine("Time for decryption :" + stopWatch.ElapsedMilliseconds + "milliseconds");
                 Console.WriteLine("Plz press enter for continuing");
                 Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("Please choose an option");
-            }
-
+            }         
         }
     }
 }
 
 
+/*
+ * Reasons why the error came with lenght error:
+ * 
+ * - the first problem was that the alg(algorithm) functions in blocks and if the msg isnt long enough it wont decrypt, it can encrypt but not the other way,
+ * thats why we use flush final block, so it finishes the encryption by putting "something" on it so it fills out the block (as far as i understand)
+ * 
+ * - the lenght for the key is dif for the dif methods : des, triple and aes, so the alg makes the key depending on the type instead of us meanualy doin so.
+ * 
+ * - the way we converted the msg was wrong basically, it had to be a string reader as well as we put it in memorysteam --> streareader.read instead of write
+ * 
+ */
