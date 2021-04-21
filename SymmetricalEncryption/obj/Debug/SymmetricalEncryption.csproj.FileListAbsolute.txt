@@ -1,0 +1,7 @@
+C:\Users\kira0698\source\repos\SymmetricalEncryption\SymmetricalEncryption\bin\Debug\SymmetricalEncryption.exe.config
+C:\Users\kira0698\source\repos\SymmetricalEncryption\SymmetricalEncryption\bin\Debug\SymmetricalEncryption.exe
+C:\Users\kira0698\source\repos\SymmetricalEncryption\SymmetricalEncryption\bin\Debug\SymmetricalEncryption.pdb
+C:\Users\kira0698\source\repos\SymmetricalEncryption\SymmetricalEncryption\obj\Debug\SymmetricalEncryption.csprojAssemblyReference.cache
+C:\Users\kira0698\source\repos\SymmetricalEncryption\SymmetricalEncryption\obj\Debug\SymmetricalEncryption.csproj.CoreCompileInputs.cache
+C:\Users\kira0698\source\repos\SymmetricalEncryption\SymmetricalEncryption\obj\Debug\SymmetricalEncryption.exe
+C:\Users\kira0698\source\repos\SymmetricalEncryption\SymmetricalEncryption\obj\Debug\SymmetricalEncryption.pdb
